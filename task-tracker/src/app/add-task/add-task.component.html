@@ -1,0 +1,17 @@
+<div class="add-task">
+    <mat-form-field class="add-task__form-field example-form-field">
+        <mat-label>Description</mat-label>
+        <input matInput placeholder="Enter task description" name="description" [(ngModel)]="newTask.description">
+
+
+    </mat-form-field>
+    <mat-form-field class="add-task__form-field example-form-field">
+        <mat-label>Priority</mat-label>
+        <mat-select placeholder="Select priority" name="priority" [(ngModel)]="newTask.priority">
+            <mat-option value="Low">Low</mat-option>
+            <mat-option value="Medium">Medium</mat-option>
+            <mat-option value="High">High</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-button (click)="onTaskAdded()">Add</button>
+</div>

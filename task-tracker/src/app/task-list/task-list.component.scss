@@ -1,0 +1,57 @@
+.task-list {
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 100vh;
+    color:black;
+}
+
+
+.task-list__title {
+    color:black;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.task-list__search-form {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.task-list__header, .task-list__item {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    align-items: center;
+    letter-spacing: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.task-list__header {
+    font-weight: bold;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    color:black;
+}
+
+.task-list__item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    color:black;
+}
+
+.task-list__header-item, .task-item__date, .task-item__priority, .task-item__description, .task-item__actions {
+    padding: 0 10px;
+}
+
+.task-item__actions button {
+    margin-right: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color:black;
+}
+
+.task-item__actions button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}

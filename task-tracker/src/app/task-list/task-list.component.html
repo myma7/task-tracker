@@ -1,0 +1,30 @@
+<div class="task-list">
+    <div class="task-list-general">
+        <h1 class="task-list__title">Welcome in Task tracker</h1>
+
+        <mat-form-field class="task-list__search-form example-form-field">
+            <mat-label>Search</mat-label>
+            <input matInput placeholder="Searching">
+            <button mat-button matSuffix class="mat-small">Search</button>
+            <button mat-button matSuffix routerLink="/add-task">Adding</button>
+        </mat-form-field>
+
+        <div class="task-list__header">
+            <div class="task-list__header-item">Date Create</div>
+            <div class="task-list__header-item">Priority</div>
+            <div class="task-list__header-item">Description</div>
+            <div class="task-list__header-item">Actions</div>
+        </div>
+
+        <div *ngFor="let task of tasks" class="task-list__item task-item">
+            <div class="task-item__date"> <b>{{ task.dateCreate }}</b></div>
+            <div class="task-item__priority"> <b>{{ task.priority }}</b></div>
+            <div class="task-item__description"> <b>{{ task.description }}</b></div>
+            <div class="task-item__actions">
+                <button mat-button matSuffix> Done</button>
+                <button mat-button matSuffix> Edit</button>
+                <button mat-button matSuffix> Remove</button>
+            </div>
+        </div>
+    </div>
+</div>
