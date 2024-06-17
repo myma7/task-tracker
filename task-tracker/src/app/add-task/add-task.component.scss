@@ -1,8 +1,55 @@
-button {
-   
-    padding: 1px;
-    background-color: rgb(146, 79, 79);
-    border: none;
-    border-radius: 20px;
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+.add-task {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: black;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.add-task__form-field {
+    margin-bottom: 20px;
+}
+
+button[mat-button] {
+    background: rgba(255, 255, 255, 0.2);
+    color: black;
+    margin-top: 10px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition:  0.3s;
+}
+
+button[mat-button]:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.task-error-message {
+    color: red;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}

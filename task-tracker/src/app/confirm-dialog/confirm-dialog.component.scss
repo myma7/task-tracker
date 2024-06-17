@@ -1,0 +1,22 @@
+.dialog-title {
+    color: orange;
+    font-weight: bold;
+  }
+  
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+.no-button {
+    color: black;
+    background-color: red;
+    font-weight: bold;
+}
+  
+.yes-button {
+    color: black;
+    background-color: green;
+    font-weight: bold;
+    display: flex;
+}
