@@ -1,3 +1,19 @@
+* { 
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+
+}
+
+.add-task {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+}
+
 button {
    
     padding: 1px;
