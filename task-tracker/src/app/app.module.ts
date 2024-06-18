@@ -13,13 +13,16 @@ import { MatFormFieldModule  } from '@angular/material/form-field';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog'; 
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskListComponent,
-    AddTaskComponent
+    AddTaskComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { FormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatOptionModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

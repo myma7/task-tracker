@@ -1,6 +1,6 @@
 <div class="task-list">
     <div class="task-list-general">
-        <h1 class="task-list__title">Welcome in Task tracker</h1>
+        <h1 class="task-list__title">{{titlePage}}</h1>
 
         <mat-form-field class="task-list__search-form example-form-field">
             <mat-label>Search</mat-label>
@@ -10,7 +10,7 @@
         </mat-form-field>
 
         <div class="task-list__header">
-            <div class="task-list__header-item">Date Create</div>
+            <div class="task-list__header-item">Date create</div>
             <div class="task-list__header-item">Priority</div>
             <div class="task-list__header-item">Description</div>
             <div class="task-list__header-item">Actions</div>
@@ -24,7 +24,7 @@
                 <button *ngIf="!task.done" mat-button matSuffix (click)="markAsDone(task.id)"> Done</button>
                 <button *ngIf="task.done" mat-button matSuffix (click)="revertDone(task.id)">Revert</button>
                 <button mat-button matSuffix> Edit</button>
-                <button mat-button matSuffix> Remove</button>
+                <button mat-button matSuffix (click)="remove(task.id)"> Remove</button>
             </div>
         </div>
     </div>

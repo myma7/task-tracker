@@ -37,4 +37,8 @@ export class TaskService {
             task.done = false;
         }
     }
+
+    removeTask(taskId: number): void {
+        this.tasks = this.tasks.filter(item => item.id !==taskId)
+    }
 }
