@@ -21,6 +21,7 @@
     
 }
 
+
 .task-list__header, .task-list__item {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -56,3 +57,7 @@
 .task-item__actions button:hover {
     background: rgba(255, 255, 255, 0.3);
 }
+.done {
+    text-decoration: line-through;
+    color: rgb(252, 7, 7);
+  }

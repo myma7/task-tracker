@@ -25,4 +25,12 @@ export class TaskListComponent implements OnInit {
     })
   }
 
+  markAsDone(taskId:number): void {
+    this.taskService.markTaskAsDone(taskId);
+  }
+
+  revertDone(taskId:number): void {
+    this.taskService.revertTaskDone(taskId);
+  }
+
 }

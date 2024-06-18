@@ -16,12 +16,13 @@
             <div class="task-list__header-item">Actions</div>
         </div>
 
-        <div *ngFor="let task of tasks" class="task-list__item task-item">
+        <div *ngFor="let task of tasks"  [class.done] = "task.done" class="task-list__item task-item">
             <div class="task-item__date"> <b>{{ task.dateCreate }}</b></div>
             <div class="task-item__priority"> <b>{{ task.priority }}</b></div>
             <div class="task-item__description"> <b>{{ task.description }}</b></div>
             <div class="task-item__actions">
-                <button mat-button matSuffix> Done</button>
+                <button *ngIf="!task.done" mat-button matSuffix (click)="markAsDone(task.id)"> Done</button>
+                <button *ngIf="task.done" mat-button matSuffix (click)="revertDone(task.id)">Revert</button>
                 <button mat-button matSuffix> Edit</button>
                 <button mat-button matSuffix> Remove</button>
             </div>
