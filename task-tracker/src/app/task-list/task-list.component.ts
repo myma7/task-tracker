@@ -9,28 +9,67 @@ import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.compone
   styleUrls: ['./task-list.component.scss']
 })
 export class TaskListComponent implements OnInit {
-  titlePage= "Welcome in Task Tracker"
+  titlePage = "Welcome in Task Tracker";
   tasks: any[] = [];
+  filteredTasks: any[] = [];
+  searchQuery: string = '';
+  paginatedTasks: any[] = [];
+  itemsPerPage: number = 5;
+  currentPage: number = 0;
+  totalPages: number = 0;
 
   constructor(private taskService: TaskService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.tasks = this.taskService.getTasks();
+    this.filterTasks();
+  }
+
+  filterTasks(): void {
+    this.filteredTasks = this.tasks.filter(task => 
+      task.description.toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
+    this.updatePagination();
   }
 
   onTaskAdded(newTask: any) {
     this.taskService.addTask(newTask);
     this.tasks = this.taskService.getTasks(); 
+    this.filterTasks(); 
   }
 
   markAsDone(taskId: number): void {
     this.taskService.markTaskAsDone(taskId);
     this.tasks = this.taskService.getTasks(); 
+    this.filterTasks(); 
   }
 
   revertDone(taskId: number): void {
     this.taskService.revertTaskDone(taskId);
     this.tasks = this.taskService.getTasks(); 
+    this.filterTasks(); 
+  }
+
+  updatePagination() {
+    this.totalPages = Math.ceil(this.filteredTasks.length / this.itemsPerPage);
+    this.paginatedTasks = this.filteredTasks.slice(
+        this.currentPage * this.itemsPerPage,
+        (this.currentPage + 1) * this.itemsPerPage
+    );
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages - 1) {
+        this.currentPage++;
+        this.updatePagination();
+    }
+  }
+
+  prevPage() {
+    if (this.currentPage > 0) {
+        this.currentPage--;
+        this.updatePagination();
+    }
   }
 
   remove(taskId: number): void {
@@ -45,6 +84,7 @@ export class TaskListComponent implements OnInit {
         if (result) {
           this.taskService.removeTask(taskId);
           this.tasks = this.taskService.getTasks(); 
+          this.filterTasks(); 
         }
       });
     }

@@ -4,7 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
   selector: 'app-confirm-dialog',
   template: `
-    <h1 mat-dialog-title>Confirmation</h1>
+    <h1 mat-dialog-title style="color: orange; font-weight: bold;">Confirmation</h1>
     <div mat-dialog-content>
       <p>Are you sure you want to delete the task with description "{{ data.description }}"?</p>
     </div>

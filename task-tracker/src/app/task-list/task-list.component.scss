@@ -61,3 +61,9 @@
     text-decoration: line-through;
     color: rgb(252, 7, 7);
   }
+
+
+.task-list__search-container{
+    display:flex;
+    flex-direction: row;
+  }

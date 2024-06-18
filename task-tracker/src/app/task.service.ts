@@ -39,6 +39,6 @@ export class TaskService {
     }
 
     removeTask(taskId: number): void {
-        this.tasks = this.tasks.filter(item => item.id !==taskId)
+        this.tasks = this.tasks.filter(item => item.id !== taskId)
     }
 }
