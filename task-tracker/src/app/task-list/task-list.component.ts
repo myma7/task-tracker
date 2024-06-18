@@ -22,6 +22,7 @@ export class TaskListComponent implements OnInit {
 
   ngOnInit(): void {
     this.tasks = this.taskService.getTasks();
+    this.removeDuplicates(); 
     this.filterTasks();
   }
 
@@ -35,18 +36,21 @@ export class TaskListComponent implements OnInit {
   onTaskAdded(newTask: any) {
     this.taskService.addTask(newTask);
     this.tasks = this.taskService.getTasks(); 
+    this.removeDuplicates(); 
     this.filterTasks(); 
   }
 
   markAsDone(taskId: number): void {
     this.taskService.markTaskAsDone(taskId);
     this.tasks = this.taskService.getTasks(); 
+    this.removeDuplicates(); 
     this.filterTasks(); 
   }
 
   revertDone(taskId: number): void {
     this.taskService.revertTaskDone(taskId);
     this.tasks = this.taskService.getTasks(); 
+    this.removeDuplicates(); 
     this.filterTasks(); 
   }
 
@@ -76,7 +80,7 @@ export class TaskListComponent implements OnInit {
     const task = this.tasks.find(t => t.id === taskId);
     if (task) {
       const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-        width: '250px',
+        width: '600px',
         data: { description: task.description }
       });
 
@@ -84,9 +88,26 @@ export class TaskListComponent implements OnInit {
         if (result) {
           this.taskService.removeTask(taskId);
           this.tasks = this.taskService.getTasks(); 
+          this.removeDuplicates(); 
           this.filterTasks(); 
         }
       });
     }
+  }
+
+  removeDuplicates(): void {
+    const uniqueDescriptions = new Set<string>();
+    const uniqueTasks: any[] = [];
+  
+    this.tasks.forEach(task => {
+      const description = task.description.toLowerCase();
+      if (!uniqueDescriptions.has(description)) {
+        uniqueDescriptions.add(description);
+        uniqueTasks.push(task);
+      }
+    });
+  
+    this.tasks = uniqueTasks;
+    this.filterTasks(); 
   }
 }

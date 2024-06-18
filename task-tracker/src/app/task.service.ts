@@ -11,6 +11,8 @@ export class TaskService {
         { id: 4, dateCreate: new Date().toISOString().split('T')[0], priority: 'medium', description: 'Do grocery shopping for the week', done: false }
     ];
 
+    errorMessage: string = '';
+
     constructor() { }
 
     getTasks() {
@@ -18,10 +20,15 @@ export class TaskService {
     }
 
     addTask(newTask: any) {
-        newTask.id = this.tasks.length + 1;
-        newTask.dateCreate = new Date().toISOString().split('T')[0];
-        newTask.done = false;
-        this.tasks.push(newTask);
+        if (this.isTaskValid(newTask)) {
+            newTask.id = this.tasks.length + 1;
+            newTask.dateCreate = new Date().toISOString().split('T')[0];
+            newTask.done = false;
+            this.tasks.push(newTask);
+            this.errorMessage = '';
+        } else {
+            this.errorMessage = 'Cannot add empty task or task with missing priority.';
+        }
     }
 
     markTaskAsDone(taskId: number): void {
@@ -40,5 +47,9 @@ export class TaskService {
 
     removeTask(taskId: number): void {
         this.tasks = this.tasks.filter(item => item.id !== taskId)
+    }
+
+    private isTaskValid(task: any): boolean {
+        return task.description && task.description.trim().length > 0 && task.priority;
     }
 }

@@ -1,7 +1,6 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { TaskService } from '../task.service';
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-add-task',
@@ -12,15 +11,15 @@ export class AddTaskComponent {
   newTask: any = {
     description: '',
     priority: ''
-};
+  };
 
-constructor(private taskService: TaskService, private router: Router) {}
+  constructor(public taskService: TaskService, private router: Router) {}
 
-onTaskAdded() {
-  this.taskService.addTask(this.newTask);
-  this.newTask = {
-      description: '',
-      priority: ''
+  onTaskAdded() {
+    this.taskService.addTask(this.newTask);
+    this.newTask = {
+        description: '',
+        priority: ''
     };
   }
 }

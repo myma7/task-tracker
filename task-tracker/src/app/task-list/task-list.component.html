@@ -4,10 +4,10 @@
 
         <div class="task-list__search-container">
             <mat-form-field class="task-list__search-form example-form-field">
-                <mat-label>Search</mat-label>
+                <mat-label>Search by description..</mat-label>
                 <input matInput placeholder="Search" [(ngModel)]="searchQuery" (input)="filterTasks()">
             </mat-form-field>
-            <button mat-button matSuffix routerLink="/add-task">Adding</button>
+            <button mat-button matSuffix routerLink="/add-task">New item</button>
         </div>
 
         <div class="task-list__header">

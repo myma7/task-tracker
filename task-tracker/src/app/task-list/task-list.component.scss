@@ -8,6 +8,8 @@
 
 
 .task-list__title {
+    font-size: 4rem;
+    letter-spacing: 1px;
     color:black;
     text-align: center;
     margin-bottom: 20px;
@@ -66,4 +68,6 @@
 .task-list__search-container{
     display:flex;
     flex-direction: row;
+    justify-content: space-between;
   }
+
