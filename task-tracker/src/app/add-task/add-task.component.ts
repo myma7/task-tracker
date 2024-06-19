@@ -21,5 +21,6 @@ export class AddTaskComponent {
         description: '',
         priority: ''
     };
+    this.router.navigate(['/task-list']);
   }
 }

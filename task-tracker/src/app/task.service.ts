@@ -1,25 +1,28 @@
+
+
 import { Injectable } from "@angular/core";
+import { Task } from "./models/task.model";
 
 @Injectable({
     providedIn: 'root'
 })
 export class TaskService {
-    private tasks: any[] = [
+    private tasks: Task[] = [
         { id: 1, dateCreate: new Date().toISOString().split('T')[0], priority: 'medium', description: 'Tidy up the room', done: false },
         { id: 2, dateCreate: new Date().toISOString().split('T')[0], priority: 'low', description: 'Sign up for a yoga class', done: false },
         { id: 3, dateCreate: new Date().toISOString().split('T')[0], priority: 'high', description: 'Read the article "10 Ways to Improve Remote Work Efficiency"', done: false },
-        { id: 4, dateCreate: new Date().toISOString().split('T')[0], priority: 'medium', description: 'Do grocery shopping for the week', done: false }
+        { id: 4, dateCreate: new Date().toISOString().split('T')[0], priority: 'medium', description: 'Do grocery shopping for the week', done: false },
+        { id: 5, dateCreate: new Date().toISOString().split('T')[0], priority: 'low', description: 'Do a math homework', done: false },
+        { id: 6, dateCreate: new Date().toISOString().split('T')[0], priority: 'low', description: 'Do a english homework', done: false }
     ];
 
     errorMessage: string = '';
 
-    constructor() { }
-
-    getTasks() {
+    getTasks(): Task[] {
         return this.tasks;
     }
 
-    addTask(newTask: any) {
+    addTask(newTask: Task) {
         if (this.isTaskValid(newTask)) {
             newTask.id = this.tasks.length + 1;
             newTask.dateCreate = new Date().toISOString().split('T')[0];
@@ -49,7 +52,8 @@ export class TaskService {
         this.tasks = this.tasks.filter(item => item.id !== taskId)
     }
 
-    private isTaskValid(task: any): boolean {
-        return task.description && task.description.trim().length > 0 && task.priority;
+    private isTaskValid(task: Task): boolean {
+        return !!task.description && task.description.trim().length > 0 && !!task.priority;
     }
+    
 }
