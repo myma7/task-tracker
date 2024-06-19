@@ -63,6 +63,14 @@ export class TaskService {
         this.filteredTasks.sort((a, b) => b.description.localeCompare(a.description));
     }
 
+    sortTasksByPriorityByAscending(): void {
+        this.filteredTasks.sort((a, b) => a.priority.localeCompare(b.priority));
+    }
+
+    sortTasksByPriorityByDescending(): void {
+        this.filteredTasks.sort((a, b) => b.priority.localeCompare(a.priority));
+    }
+
     applyFilter(): void {
         this.filteredTasks = this.tasks.filter(task => 
             task.description.toLowerCase().includes(this.filterText.toLowerCase())
