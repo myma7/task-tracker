@@ -52,8 +52,15 @@ export class TaskService {
         this.tasks = this.tasks.filter(item => item.id !== taskId)
     }
 
+
+    sortTasksByDescriptionByAscending(): void {
+        this.tasks.sort((a, b) => a.description.localeCompare(b.description));
+    }
+    sortTasksByDescriptionByDescending(): void {
+        this.tasks.sort((a, b) => b.description.localeCompare(a.description));
+    }
+ 
     private isTaskValid(task: Task): boolean {
         return !!task.description && task.description.trim().length > 0 && !!task.priority;
-    }
-    
+    } 
 }

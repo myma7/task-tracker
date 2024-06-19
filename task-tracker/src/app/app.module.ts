@@ -15,6 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog'; 
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatOptionModule,
     MatSelectModule,
     FormsModule,
-    MatDialogModule 
+    MatDialogModule,
+    MatIconModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

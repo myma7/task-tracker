@@ -22,10 +22,13 @@ export class TaskListComponent implements OnInit {
   constructor(private taskService: TaskService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.tasks = this.taskService.getTasks();
-    this.removeDuplicates(); 
+    this.loadTasks();
     this.filterTasks();
-    this.errorMessage = this.taskService.errorMessage; 
+  }
+
+  loadTasks(): void {
+    this.tasks = this.taskService.getTasks();
+    this.filterTasks();
   }
 
   filterTasks(): void {
@@ -35,52 +38,24 @@ export class TaskListComponent implements OnInit {
     this.updatePagination();
   }
 
-  onTaskAdded(newTask: any) {
+  onTaskAdded(newTask: any): void {
     if (this.tasks.some(task => task.description.toLowerCase() === newTask.description.toLowerCase())) {
       this.errorMessage = "You cannot add the same element!";
     } else {
       this.taskService.addTask(newTask);
-      this.tasks = this.taskService.getTasks(); 
-      this.removeDuplicates(); 
-      this.filterTasks(); 
-      this.errorMessage = ''; 
+      this.loadTasks();
+      this.errorMessage = '';
     }
   }
 
   markAsDone(taskId: number): void {
     this.taskService.markTaskAsDone(taskId);
-    this.tasks = this.taskService.getTasks(); 
-    this.removeDuplicates(); 
-    this.filterTasks(); 
+    this.loadTasks();
   }
 
   revertDone(taskId: number): void {
     this.taskService.revertTaskDone(taskId);
-    this.tasks = this.taskService.getTasks(); 
-    this.removeDuplicates(); 
-    this.filterTasks(); 
-  }
-
-  updatePagination() {
-    this.totalPages = Math.ceil(this.filteredTasks.length / this.itemsPerPage);
-    this.paginatedTasks = this.filteredTasks.slice(
-        this.currentPage * this.itemsPerPage,
-        (this.currentPage + 1) * this.itemsPerPage
-    );
-  }
-
-  nextPage() {
-    if (this.currentPage < this.totalPages - 1) {
-        this.currentPage++;
-        this.updatePagination();
-    }
-  }
-
-  prevPage() {
-    if (this.currentPage > 0) {
-        this.currentPage--;
-        this.updatePagination();
-    }
+    this.loadTasks();
   }
 
   remove(taskId: number): void {
@@ -94,12 +69,20 @@ export class TaskListComponent implements OnInit {
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
           this.taskService.removeTask(taskId);
-          this.tasks = this.taskService.getTasks(); 
-          this.removeDuplicates(); 
-          this.filterTasks(); 
+          this.loadTasks();
         }
       });
     }
+  }
+
+  sortTasksAsc(): void {
+    this.taskService.sortTasksByDescriptionByAscending();
+    this.loadTasks();
+  }
+
+  sortTasksDesc(): void {
+    this.taskService.sortTasksByDescriptionByDescending();
+    this.loadTasks();
   }
 
   removeDuplicates(): void {
@@ -118,5 +101,27 @@ export class TaskListComponent implements OnInit {
 
     this.tasks = uniqueTasks;
     this.filterTasks(); 
+  }
+
+  updatePagination(): void {
+    this.totalPages = Math.ceil(this.filteredTasks.length / this.itemsPerPage);
+    this.paginatedTasks = this.filteredTasks.slice(
+        this.currentPage * this.itemsPerPage,
+        (this.currentPage + 1) * this.itemsPerPage
+    );
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages - 1) {
+        this.currentPage++;
+        this.updatePagination();
+    }
+  }
+
+  prevPage(): void {
+    if (this.currentPage > 0) {
+        this.currentPage--;
+        this.updatePagination();
+    }
   }
 }
