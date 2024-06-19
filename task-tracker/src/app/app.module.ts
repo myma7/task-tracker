@@ -16,6 +16,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { MatDialogModule } from '@angular/material/dialog'; 
 import { MatIconModule } from '@angular/material/icon';
 import { FilterComponent } from './filter/filter.component';
+import { EditTaskComponent } from './edit-task/edit-task.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { FilterComponent } from './filter/filter.component';
     AddTaskComponent,
     ConfirmDialogComponent,
     FilterComponent,
+    EditTaskComponent,
   ],
   imports: [
     BrowserModule,
