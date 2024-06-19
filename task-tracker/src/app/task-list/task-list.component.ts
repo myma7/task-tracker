@@ -25,7 +25,7 @@ export class TaskListComponent implements OnInit {
     this.tasks = this.taskService.getTasks();
     this.removeDuplicates(); 
     this.filterTasks();
-    this.errorMessage = this.taskService.errorMessage; // Display error message
+    this.errorMessage = this.taskService.errorMessage; 
   }
 
   filterTasks(): void {
@@ -43,7 +43,7 @@ export class TaskListComponent implements OnInit {
       this.tasks = this.taskService.getTasks(); 
       this.removeDuplicates(); 
       this.filterTasks(); 
-      this.errorMessage = ''; // Clear error message
+      this.errorMessage = ''; 
     }
   }
 
