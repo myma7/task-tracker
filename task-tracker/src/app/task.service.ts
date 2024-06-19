@@ -63,6 +63,26 @@ export class TaskService {
         this.filteredTasks.sort((a, b) => b.description.localeCompare(a.description));
     }
 
+    sortTasksByPriorityByAscending(): void {
+        const priorityMap: { [key: string]: number } = {
+            'low': 1,
+            'medium': 2,
+            'high': 3
+        };
+    
+        this.filteredTasks.sort((a, b) => priorityMap[a.priority] - priorityMap[b.priority]);
+    }
+    
+    sortTasksByPriorityByDescending(): void {
+        const priorityMap: { [key: string]: number } = {
+            'low': 1,
+            'medium': 2,
+            'high': 3
+        };
+    
+        this.filteredTasks.sort((a, b) => priorityMap[b.priority] - priorityMap[a.priority]);
+    }
+
     applyFilter(): void {
         this.filteredTasks = this.tasks.filter(task => 
             task.description.toLowerCase().includes(this.filterText.toLowerCase())

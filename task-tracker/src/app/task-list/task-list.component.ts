@@ -95,6 +95,16 @@ export class TaskListComponent implements OnInit, OnDestroy {
     this.loadTasks();
   }
 
+  sortTasksAscPriority(): void {
+    this.taskService.sortTasksByPriorityByAscending();
+    this.loadTasks();
+  }
+
+  sortTasksDescPriority(): void {
+    this.taskService.sortTasksByPriorityByDescending();
+    this.loadTasks();
+  }
+
   removeDuplicates(): void {
     const uniqueDescriptions = new Set<string>();
     const uniqueTasks: any[] = [];
