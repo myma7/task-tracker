@@ -1,4 +1,4 @@
 <div class="filter-container">
-  <input type="text" [(ngModel)]="taskService.filterText" placeholder="Enter text to filter..." (keydown.enter)="applyFilter()" />
+  <input type="text" [(ngModel)]="taskService.filterPriority" placeholder="Enter priority to filter..." (keydown.enter)="applyFilter()" />
   <button (click)="applyFilter()">Filter</button>
 </div>

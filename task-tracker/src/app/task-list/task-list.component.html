@@ -41,7 +41,7 @@
             <div class="task-item__actions">
                 <button *ngIf="!task.done" mat-button matSuffix (click)="markAsDone(task.id)">Done</button>
                 <button *ngIf="task.done" mat-button matSuffix (click)="revertDone(task.id)">Revert</button>
-                <button mat-button matSuffix>Edit</button>
+                <button mat-button matSuffix routerLink="/edit-task">Edit</button>
                 <button mat-button matSuffix (click)="remove(task.id)">Remove</button>
             </div>
         </div>

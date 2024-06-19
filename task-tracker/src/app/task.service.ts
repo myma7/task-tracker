@@ -17,6 +17,7 @@ export class TaskService {
     public filterText: string = '';
     public filteredTasks: Task[] = this.tasks;
     errorMessage: string = '';
+    public filterPriority: string = '';
     filterChanged: EventEmitter<void> = new EventEmitter<void>();
 
     getTasks(): Task[] {
@@ -88,9 +89,9 @@ export class TaskService {
 
     applyFilter(): void {
         this.filteredTasks = this.tasks.filter(task => 
-            task.description.toLowerCase().includes(this.filterText.toLowerCase())
+            task.priority.toLowerCase().includes(this.filterPriority.toLowerCase())
         );
-        this.filterChanged.emit();  
+        this.filterChanged.emit(); 
     }
 
 
