@@ -16,11 +16,24 @@ export class AddTaskComponent {
   constructor(public taskService: TaskService, private router: Router) {}
 
   onTaskAdded() {
+    if (this.newTask.description.trim() === '' || this.newTask.priority.trim() === '') {
+      this.taskService.errorMessage = 'Cannot add empty task or task with missing priority!';
+      this.router.navigate(['/add-list']);
+      return; 
+    }
+    
+    if (this.taskService.tasks.some(task => task.description.toLowerCase() === this.newTask.description.toLowerCase())) {
+      this.taskService.errorMessage = 'You cannot add the same element! Bro, please correct it!';
+      this.router.navigate(['/add-list']);
+      return;
+    }
+
     this.taskService.addTask(this.newTask);
     this.newTask = {
-        description: '',
-        priority: ''
+      description: '',
+      priority: ''
     };
+    this.taskService.errorMessage = ''; 
     this.router.navigate(['/task-list']);
   }
 }

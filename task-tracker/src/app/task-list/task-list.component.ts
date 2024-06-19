@@ -17,6 +17,7 @@ export class TaskListComponent implements OnInit {
   itemsPerPage: number = 5;
   currentPage: number = 0;
   totalPages: number = 0;
+  errorMessage: string = '';
 
   constructor(private taskService: TaskService, public dialog: MatDialog) { }
 
@@ -24,6 +25,7 @@ export class TaskListComponent implements OnInit {
     this.tasks = this.taskService.getTasks();
     this.removeDuplicates(); 
     this.filterTasks();
+    this.errorMessage = this.taskService.errorMessage; // Display error message
   }
 
   filterTasks(): void {
@@ -34,10 +36,15 @@ export class TaskListComponent implements OnInit {
   }
 
   onTaskAdded(newTask: any) {
-    this.taskService.addTask(newTask);
-    this.tasks = this.taskService.getTasks(); 
-    this.removeDuplicates(); 
-    this.filterTasks(); 
+    if (this.tasks.some(task => task.description.toLowerCase() === newTask.description.toLowerCase())) {
+      this.errorMessage = "You cannot add the same element!";
+    } else {
+      this.taskService.addTask(newTask);
+      this.tasks = this.taskService.getTasks(); 
+      this.removeDuplicates(); 
+      this.filterTasks(); 
+      this.errorMessage = ''; // Clear error message
+    }
   }
 
   markAsDone(taskId: number): void {
@@ -98,15 +105,17 @@ export class TaskListComponent implements OnInit {
   removeDuplicates(): void {
     const uniqueDescriptions = new Set<string>();
     const uniqueTasks: any[] = [];
-  
+   
     this.tasks.forEach(task => {
       const description = task.description.toLowerCase();
       if (!uniqueDescriptions.has(description)) {
         uniqueDescriptions.add(description);
         uniqueTasks.push(task);
+      } else {
+        this.errorMessage = "You cannot add the same element!";
       }
     });
-  
+
     this.tasks = uniqueTasks;
     this.filterTasks(); 
   }

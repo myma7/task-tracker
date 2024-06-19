@@ -7,7 +7,7 @@ import { Task } from "./models/task.model";
     providedIn: 'root'
 })
 export class TaskService {
-    private tasks: Task[] = [
+    public tasks: Task[] = [
         { id: 1, dateCreate: new Date().toISOString().split('T')[0], priority: 'medium', description: 'Tidy up the room', done: false },
         { id: 2, dateCreate: new Date().toISOString().split('T')[0], priority: 'low', description: 'Sign up for a yoga class', done: false },
         { id: 3, dateCreate: new Date().toISOString().split('T')[0], priority: 'high', description: 'Read the article "10 Ways to Improve Remote Work Efficiency"', done: false },

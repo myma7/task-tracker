@@ -12,7 +12,7 @@
                 <mat-option value="high">High</mat-option>
             </mat-select>
         </mat-form-field>
-        <button mat-button (click)="onTaskAdded()">Add</button>
+        <button mat-button matSuffix (click)="onTaskAdded()">Add</button>
     </div>
     <div *ngIf="taskService.errorMessage" class="task-error-message">
         {{ taskService.errorMessage }}
