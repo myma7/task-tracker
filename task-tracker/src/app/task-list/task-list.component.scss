@@ -82,3 +82,50 @@
 .button_new_item:hover {
     background: rgba(255, 255, 255, 0.3);
 }
+
+@media (max-width: 768px) {
+
+  
+    .task-list {
+        padding: 10px;
+        height: 100vh;
+    }
+
+    .task-list__title {
+        font-size: 2rem;
+    }
+
+    .task-list__search-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .task-list__header, .task-list__item {
+        grid-template-columns: 1fr;
+    }
+
+    .task-list__header-item, .task-item__date, .task-item__priority, .task-item__description, .task-item__actions {
+        padding: 5px 0;
+        text-align: center;
+    }
+
+    .task-item__actions {
+        display: flex;
+        justify-content: center;
+    }
+
+    .task-item__actions button {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .task-list__search-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .button_new_item {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
