@@ -37,9 +37,12 @@ export class TaskService {
     }
 
     markTaskAsDone(taskId: number): void {
-        const task = this.tasks.find(t => t.id === taskId);
-        if (task) {
-            task.done = true;
+        const taskIndex = this.tasks.findIndex(t => t.id === taskId);
+        if (taskIndex !== -1) {
+            this.tasks[taskIndex].done = true;
+            const [doneTask] = this.tasks.splice(taskIndex, 1);
+            this.tasks.push(doneTask);
+            this.applyFilter();
         }
     }
 
@@ -89,6 +92,8 @@ export class TaskService {
         );
         this.filterChanged.emit();  
     }
+
+
 
     private isTaskValid(task: Task): boolean {
         return !!task.description && task.description.trim().length > 0 && !!task.priority;
