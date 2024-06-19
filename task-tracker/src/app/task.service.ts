@@ -17,6 +17,7 @@ export class TaskService {
     public filterText: string = '';
     public filteredTasks: Task[] = this.tasks;
     errorMessage: string = '';
+    public filterPriority: string = '';
     filterChanged: EventEmitter<void> = new EventEmitter<void>();
 
     getTasks(): Task[] {
@@ -37,9 +38,12 @@ export class TaskService {
     }
 
     markTaskAsDone(taskId: number): void {
-        const task = this.tasks.find(t => t.id === taskId);
-        if (task) {
-            task.done = true;
+        const taskIndex = this.tasks.findIndex(t => t.id === taskId);
+        if (taskIndex !== -1) {
+            this.tasks[taskIndex].done = true;
+            const [doneTask] = this.tasks.splice(taskIndex, 1);
+            this.tasks.push(doneTask);
+            this.applyFilter();
         }
     }
 
@@ -85,9 +89,9 @@ export class TaskService {
 
     applyFilter(): void {
         this.filteredTasks = this.tasks.filter(task => 
-            task.description.toLowerCase().includes(this.filterText.toLowerCase())
+            task.priority.toLowerCase().includes(this.filterPriority.toLowerCase())
         );
-        this.filterChanged.emit();  
+        this.filterChanged.emit(); 
     }
 
     private isTaskValid(task: Task): boolean {
