@@ -1,6 +1,4 @@
-
-
-import { Injectable } from "@angular/core";
+import { Injectable, EventEmitter } from "@angular/core";
 import { Task } from "./models/task.model";
 
 @Injectable({
@@ -16,10 +14,13 @@ export class TaskService {
         { id: 6, dateCreate: new Date().toISOString().split('T')[0], priority: 'low', description: 'Do a english homework', done: false }
     ];
 
+    public filterText: string = '';
+    public filteredTasks: Task[] = this.tasks;
     errorMessage: string = '';
+    filterChanged: EventEmitter<void> = new EventEmitter<void>();
 
     getTasks(): Task[] {
-        return this.tasks;
+        return this.filteredTasks;
     }
 
     addTask(newTask: Task) {
@@ -28,6 +29,7 @@ export class TaskService {
             newTask.dateCreate = new Date().toISOString().split('T')[0];
             newTask.done = false;
             this.tasks.push(newTask);
+            this.applyFilter();
             this.errorMessage = '';
         } else {
             this.errorMessage = 'Cannot add empty task or task with missing priority.';
@@ -49,17 +51,25 @@ export class TaskService {
     }
 
     removeTask(taskId: number): void {
-        this.tasks = this.tasks.filter(item => item.id !== taskId)
+        this.tasks = this.tasks.filter(item => item.id !== taskId);
+        this.applyFilter();
     }
-
 
     sortTasksByDescriptionByAscending(): void {
-        this.tasks.sort((a, b) => a.description.localeCompare(b.description));
+        this.filteredTasks.sort((a, b) => a.description.localeCompare(b.description));
     }
+
     sortTasksByDescriptionByDescending(): void {
-        this.tasks.sort((a, b) => b.description.localeCompare(a.description));
+        this.filteredTasks.sort((a, b) => b.description.localeCompare(a.description));
     }
- 
+
+    applyFilter(): void {
+        this.filteredTasks = this.tasks.filter(task => 
+            task.description.toLowerCase().includes(this.filterText.toLowerCase())
+        );
+        this.filterChanged.emit();  
+    }
+
     private isTaskValid(task: Task): boolean {
         return !!task.description && task.description.trim().length > 0 && !!task.priority;
     } 

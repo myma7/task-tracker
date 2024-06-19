@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TaskService } from '../task.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.scss']
 })
-export class TaskListComponent implements OnInit {
+export class TaskListComponent implements OnInit, OnDestroy {
   titlePage = "Welcome in Task Tracker";
   tasks: any[] = [];
   filteredTasks: any[] = [];
@@ -18,12 +19,21 @@ export class TaskListComponent implements OnInit {
   currentPage: number = 0;
   totalPages: number = 0;
   errorMessage: string = '';
+  private filterSubscription: Subscription = new Subscription();
 
-  constructor(private taskService: TaskService, public dialog: MatDialog) { }
+  constructor(private taskService: TaskService, public dialog: MatDialog, ) { }
 
   ngOnInit(): void {
     this.loadTasks();
-    this.filterTasks();
+    this.filterSubscription = this.taskService.filterChanged.subscribe(() => {
+      this.loadTasks();
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.filterSubscription) {
+      this.filterSubscription.unsubscribe();
+    }
   }
 
   loadTasks(): void {

@@ -1,6 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog'; 
 import { MatIconModule } from '@angular/material/icon';
+import { FilterComponent } from './filter/filter.component';
 
 
 @NgModule({
@@ -23,7 +23,8 @@ import { MatIconModule } from '@angular/material/icon';
     AppComponent,
     TaskListComponent,
     AddTaskComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserModule,

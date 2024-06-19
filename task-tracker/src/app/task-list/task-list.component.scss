@@ -6,7 +6,6 @@
     color:black;
 }
 
-
 .task-list__title {
     font-size: 4rem;
     letter-spacing: 1px;
@@ -20,9 +19,7 @@
     justify-content: space-between;
     margin-bottom: 20px;
     
-    
 }
-
 
 .task-list__header, .task-list__item {
     display: grid;
@@ -81,7 +78,6 @@
     cursor: pointer;
     height: 50px;
 }
-
 
 .button_new_item:hover {
     background: rgba(255, 255, 255, 0.3);
