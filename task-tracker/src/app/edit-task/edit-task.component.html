@@ -1,34 +1,33 @@
 <div class="edit-task">
-    <h1 class="edit-task__title">Edit Task</h1>
-    <form class="edit-task__form" >
-      <div class="edit-task__input-container">
-        <mat-form-field appearance="fill">
-          <mat-label>Title</mat-label>
-          <input matInput type="text" placeholder="Title" [(ngModel)]="currentTask.description" name="description" id="edit-task-title" class="edit-task__input">
-        </mat-form-field>
-      </div>
-      <div class="edit-task__input-container">
-        <mat-form-field appearance="fill">
-          <mat-label>Date</mat-label>
-          <input matInput [matDatepicker]="picker" placeholder="Date" [(ngModel)]="currentTask.dateCreate" name="dateCreate" id="edit-task-date" class="edit-task__input">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-      </div>
-      <div class="edit-task__input-container">
-        <mat-form-field appearance="fill">
-          <mat-label>Priority</mat-label>
-          <mat-select [(ngModel)]="currentTask.priority" name="priority" id="edit-task-priority" class="edit-task__input">
-            <mat-option value="low">Low</mat-option>
-            <mat-option value="medium">Medium</mat-option>
-            <mat-option value="high">High</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div class="edit-task__actions">
-        <button mat-raised-button color="primary" type="submit" class="button_edit_task">Save</button>
-        <button mat-raised-button color="warn" type="button" class="button_cancel_task">Cancel</button>
-      </div>
-    </form>
-  </div>
-  
+  <h1 class="edit-task__title">Edit Task</h1>
+  <form class="edit-task__form">
+    <div class="edit-task__input-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput type="text" placeholder="Title" [(ngModel)]="currentTask.description" name="description" id="edit-task-title" class="edit-task__input">
+      </mat-form-field>
+    </div>
+    <div class="edit-task__input-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker" placeholder="Date" [(ngModel)]="currentTask.dateCreate" name="dateCreate" id="edit-task-date" class="edit-task__input">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="edit-task__input-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Priority</mat-label>
+        <mat-select [(ngModel)]="currentTask.priority" name="priority" id="edit-task-priority" class="edit-task__input">
+          <mat-option value="low">Low</mat-option>
+          <mat-option value="medium">Medium</mat-option>
+          <mat-option value="high">High</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="edit-task__actions">
+      <button mat-raised-button color="primary" type="submit" class="button_edit_task">Save</button>
+      <button mat-raised-button color="warn" type="button" class="button_cancel_task" (click)="cancelEdit()">Cancel</button>
+    </div>
+  </form>
+</div>

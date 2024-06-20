@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Task } from '../models/task.model';
 import { TaskService } from '../task.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-edit-task',
   templateUrl: './edit-task.component.html',
@@ -11,7 +11,7 @@ import { TaskService } from '../task.service';
 export class EditTaskComponent implements OnInit {
   currentTask: Task;
 
-  constructor(public taskService: TaskService, private route: ActivatedRoute) {
+  constructor(public taskService: TaskService, private route: ActivatedRoute, private routerNavigate: Router) {
     this.currentTask = { id: 0, dateCreate: '', priority: '', description: '', done: false };
   }
 
@@ -20,5 +20,9 @@ export class EditTaskComponent implements OnInit {
         const taskId = +params['id']; 
         this.currentTask = { ...this.taskService.tasks[taskId] }; 
     });
+  }
+
+  cancelEdit():void{
+    this.routerNavigate.navigate(['/task-list']);
   }
 }
