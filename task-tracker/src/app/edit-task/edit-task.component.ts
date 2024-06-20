@@ -22,7 +22,14 @@ export class EditTaskComponent implements OnInit {
     });
   }
 
-  cancelEdit():void{
+  cancelEdit(): void{
     this.routerNavigate.navigate(['/task-list']);
+  }
+
+  saveTask(): void {
+    if(this.currentTask !== null){
+
+      this.routerNavigate.navigate(['/task-list']);
+    }   
   }
 }

@@ -1,6 +1,6 @@
 <div class="edit-task">
   <h1 class="edit-task__title">Edit Task</h1>
-  <form class="edit-task__form">
+  <form class="edit-task__form" (ngSubmit)="saveTask()">
     <div class="edit-task__input-container">
       <mat-form-field appearance="fill">
         <mat-label>Title</mat-label>
