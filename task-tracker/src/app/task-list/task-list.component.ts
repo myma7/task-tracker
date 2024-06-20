@@ -19,6 +19,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
   currentPage: number = 0;
   totalPages: number = 0;
   errorMessage: string = '';
+  checker: string = '';
   private filterSubscription: Subscription = new Subscription();
 
   constructor(private taskService: TaskService, public dialog: MatDialog, ) { }
@@ -66,6 +67,10 @@ export class TaskListComponent implements OnInit, OnDestroy {
   revertDone(taskId: number): void {
     this.taskService.revertTaskDone(taskId);
     this.loadTasks();
+  }
+
+  edit(taskId: number): void {
+    const task = this.tasks.find(t => t.id === taskId);
   }
 
   remove(taskId: number): void {

@@ -1,0 +1,79 @@
+.edit-task {
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: black;
+    border-radius: 8px;
+    height: 100vh;
+}
+
+.edit-task__title {
+    font-size: 3rem;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.edit-task__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.edit-task__input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-task__label {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.edit-task__input {
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    color: black;
+}
+
+.edit-task__actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button_edit_task, .button_cancel_task {
+    background: rgba(255, 255, 255, 0.2);
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button_edit_task:hover, .button_cancel_task:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+    .edit-task {
+        padding: 10px;
+    }
+
+    .edit-task__title {
+        font-size: 2rem;
+    }
+
+    .edit-task__form {
+        gap: 10px;
+    }
+
+    .edit-task__input {
+        padding: 8px;
+    }
+
+    .button_edit_task, .button_cancel_task {
+        padding: 8px 16px;
+    }
+}

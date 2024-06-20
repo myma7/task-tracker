@@ -94,6 +94,10 @@ export class TaskService {
         this.filterChanged.emit(); 
     }
 
+    
+  edit(taskId: number): void {
+    const task = this.tasks.find(t => t.id === taskId);
+  }
     private isTaskValid(task: Task): boolean {
         return !!task.description && task.description.trim().length > 0 && !!task.priority;
     } 

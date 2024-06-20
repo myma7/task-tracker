@@ -7,7 +7,7 @@ import { EditTaskComponent } from './edit-task/edit-task.component';
 const routes: Routes = [
   { path: 'add-task', component: AddTaskComponent },
   { path: 'task-list', component: TaskListComponent },
-  { path: 'edit-task', component: EditTaskComponent },
+  { path: 'edit-task/:id', component: EditTaskComponent },
   { path: '', redirectTo: '/task-list', pathMatch: 'full' }
 ];
 

@@ -17,6 +17,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { FilterComponent } from './filter/filter.component';
 import { EditTaskComponent } from './edit-task/edit-task.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { EditTaskComponent } from './edit-task/edit-task.component';
     MatSelectModule,
     FormsModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule, 
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
