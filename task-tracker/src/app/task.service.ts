@@ -134,9 +134,11 @@ export class TaskService {
       high: 3,
     };
 
-    this.filteredTasks.sort(
-      (a, b) => priorityMap[a.priority] - priorityMap[b.priority]
-    );
+    this.filteredTasks.sort((a, b) => {
+      if (a.done && !b.done) return 1;
+      if (!a.done && b.done) return -1;
+      return priorityMap[a.priority] - priorityMap[b.priority];
+    });
   }
 
   sortTasksByPriorityByDescending(): void {
@@ -146,9 +148,11 @@ export class TaskService {
       high: 3,
     };
 
-    this.filteredTasks.sort(
-      (a, b) => priorityMap[b.priority] - priorityMap[a.priority]
-    );
+    this.filteredTasks.sort((a, b) => {
+      if (a.done && !b.done) return 1;
+      if (!a.done && b.done) return -1;
+      return priorityMap[b.priority] - priorityMap[a.priority];
+    });
   }
 
   applyFilter(): void {
