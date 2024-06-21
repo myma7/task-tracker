@@ -3,7 +3,6 @@
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     color: black;
-    border-radius: 8px;
     height: 100vh;
 }
 
@@ -31,11 +30,12 @@
 }
 
 .edit-task__input {
-    padding: 10px;
+    box-sizing: border-box;
+    padding: 8px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 4px;
     background: rgba(255, 255, 255, 0.1);
-    color: black;
+    color: rgb(56, 34, 34);
 }
 
 .edit-task__actions {
@@ -43,7 +43,7 @@
     justify-content: space-between;
 }
 
-.button_edit_task, .button_cancel_task {
+.edit-task__button {
     background: rgba(255, 255, 255, 0.2);
     color: black;
     border: none;
@@ -52,7 +52,7 @@
     cursor: pointer;
 }
 
-.button_edit_task:hover, .button_cancel_task:hover {
+.edit-task__button--save:hover, .edit-task__button--cancel:hover {
     background: rgba(255, 255, 255, 0.3);
 }
 
@@ -73,7 +73,7 @@
         padding: 8px;
     }
 
-    .button_edit_task, .button_cancel_task {
+    .edit-task__button {
         padding: 8px 16px;
     }
 }

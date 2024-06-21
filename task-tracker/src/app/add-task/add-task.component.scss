@@ -16,7 +16,11 @@
     color: black;
 }
 
-.form-container {
+.add-task__title {
+    margin-bottom: 20px;
+}
+
+.add-task__form-container {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -31,7 +35,7 @@
     margin-bottom: 20px;
 }
 
-button[mat-button] {
+.add-task__button {
     background: rgba(255, 255, 255, 0.2);
     color: black;
     margin-top: 10px;
@@ -39,14 +43,14 @@ button[mat-button] {
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-    transition:  0.3s;
+    transition: 0.3s;
 }
 
-button[mat-button]:hover {
+.add-task__button:hover {
     background: rgba(255, 255, 255, 0.3);
 }
 
-.task-error-message {
+.add-task__error-message {
     color: red;
     margin-top: 10px;
     font-size: 20px;
@@ -54,6 +58,6 @@ button[mat-button]:hover {
     text-align: center;
 }
 
-mat-label, input{
+.add-task__label, .add-task__input {
     color: black;
 }

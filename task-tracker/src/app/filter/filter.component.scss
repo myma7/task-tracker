@@ -9,7 +9,7 @@
     color: black;
 }
 
-.filter-container input {
+.filter-container__input {
     flex-grow: 1;
     padding: 10px;
     border: none;
@@ -19,20 +19,20 @@
     color: black;
 }
 
-.filter-container input::placeholder {
+.filter-container__input::placeholder {
     color: rgb(43, 41, 41);
 }
 
-.filter-container button {
+.filter-container__button {
     background: rgba(255, 255, 255, 0.2);
     color: black;
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-    transition:  0.3s ease;
+    transition: 0.3s ease;
 }
 
-.filter-container button:hover {
+.filter-container__button:hover {
     background: rgba(255, 255, 255, 0.3);
 }

@@ -3,14 +3,20 @@
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     height: 100vh;
-    color:black;
+    color: black;
 }
 
 .task-list__title {
     font-size: 4rem;
     letter-spacing: 1px;
-    color:black;
+    color: black;
     text-align: center;
+    margin-bottom: 20px;
+}
+
+.task-list__search-container {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 20px;
 }
 
@@ -18,10 +24,10 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
-    
 }
 
-.task-list__header, .task-list__item {
+.task-list__header,
+.task-list__item {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
@@ -35,40 +41,45 @@
 .task-list__header {
     font-weight: bold;
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-    color:black;
+    color: black;
 }
 
 .task-list__item {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    color:black;
+    color: black;
 }
 
-.task-list__header-item, .task-item__date, .task-item__priority, .task-item__description, .task-item__actions {
+.task-list__header-item,
+.task-list__item-date,
+.task-list__item-priority,
+.task-list__item-description,
+.task-list__item-actions {
     padding: 0 10px;
 }
 
-.task-item__actions button {
+.task-list__item-actions button {
     margin-right: 5px;
     background: rgba(255, 255, 255, 0.2);
-    color:black;
+    color: black;
 }
 
-.task-item__actions button:hover {
+.task-list__item-actions button:hover {
     background: rgba(255, 255, 255, 0.3);
 }
-.done {
+
+.task-list__item--done {
     text-decoration: line-through;
     color: rgb(252, 7, 7);
-  }
+}
 
+.task-list__item .task-list__item-actions button[disabled] {
+    color: #ccc; 
+    background-color: #f5f5f5; 
+    border-color: #ccc; 
+    cursor: not-allowed; 
+}
 
-.task-list__search-container{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-.button_new_item{
+.task-list__button-new-item {
     background: rgba(255, 255, 255, 0.2);
     color: black;
     margin-top: 2px;
@@ -79,16 +90,15 @@
     height: 50px;
 }
 
-.button_new_item:hover {
+.task-list__button-new-item:hover {
     background: rgba(255, 255, 255, 0.3);
 }
 
-mat-label, mat-form-field-infix{
-    color:black;
+mat-label, mat-form-field-infix {
+    color: black;
 }
 
 @media (max-width: 768px) {
-
     .task-list {
         padding: 10px;
         height: 100vh;
@@ -103,21 +113,26 @@ mat-label, mat-form-field-infix{
         align-items: stretch;
     }
 
-    .task-list__header, .task-list__item {
+    .task-list__header,
+    .task-list__item {
         grid-template-columns: 1fr;
     }
 
-    .task-list__header-item, .task-item__date, .task-item__priority, .task-item__description, .task-item__actions {
+    .task-list__header-item,
+    .task-list__item-date,
+    .task-list__item-priority,
+    .task-list__item-description,
+    .task-list__item-actions {
         padding: 5px 0;
         text-align: center;
     }
 
-    .task-item__actions {
+    .task-list__item-actions {
         display: flex;
         justify-content: center;
     }
 
-    .task-item__actions button {
+    .task-list__item-actions button {
         width: 100%;
         margin-bottom: 5px;
     }
@@ -127,7 +142,7 @@ mat-label, mat-form-field-infix{
         align-items: stretch;
     }
 
-    .button_new_item {
+    .task-list__button-new-item {
         width: 100%;
         margin-top: 10px;
     }

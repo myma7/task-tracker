@@ -1,21 +1,21 @@
 <div class="add-task">
-    <h1>Adding a new task</h1>
-    <div class="form-container">
-        <mat-form-field class="add-task__form-field example-form-field">
-            <mat-label>Description</mat-label>
-            <input matInput placeholder="Enter task description" name="description" [(ngModel)]="newTask.description">
+    <h1 class="add-task__title">Adding a new task</h1>
+    <div class="add-task__form-container">
+        <mat-form-field class="add-task__form-field">
+            <mat-label class="add-task__label">Description</mat-label>
+            <input matInput class="add-task__input" placeholder="Enter task description" name="description" [(ngModel)]="newTask.description">
         </mat-form-field>
-        <mat-form-field class="add-task__form-field example-form-field">
-            <mat-label>Priority</mat-label>
+        <mat-form-field class="add-task__form-field">
+            <mat-label class="add-task__label">Priority</mat-label>
             <mat-select placeholder="Select priority" name="priority" [(ngModel)]="newTask.priority">
                 <mat-option value="low">Low</mat-option>
                 <mat-option value="medium">Medium</mat-option>
                 <mat-option value="high">High</mat-option>
             </mat-select>
         </mat-form-field>
-        <button mat-button matSuffix (click)="onTaskAdded()">Add</button>
+        <button mat-button class="add-task__button" matSuffix (click)="onTaskAdded()">Add</button>
     </div>
-    <div *ngIf="taskService.errorMessage" class="task-error-message">
+    <div *ngIf="taskService.errorMessage" class="add-task__error-message">
         {{ taskService.errorMessage }}
     </div>
 </div>

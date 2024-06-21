@@ -37,6 +37,9 @@ export class TaskService {
         }
     }
 
+    getTaskById(id: number): Task | undefined {
+        return this.tasks.find(task => task.id === id);
+      }
     markTaskAsDone(taskId: number): void {
         const taskIndex = this.tasks.findIndex(t => t.id === taskId);
         if (taskIndex !== -1) {
@@ -54,6 +57,13 @@ export class TaskService {
         }
     }
 
+    updateTask(updatedTask: Task): void {
+        const taskIndex = this.tasks.findIndex(t => t.id === updatedTask.id);
+        if (taskIndex !== -1) {
+            this.tasks[taskIndex] = { ...updatedTask };
+            this.applyFilter();
+        }
+    }
     removeTask(taskId: number): void {
         this.tasks = this.tasks.filter(item => item.id !== taskId);
         this.applyFilter();

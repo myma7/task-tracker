@@ -1,20 +1,20 @@
 <div class="task-list">
-    <div class="task-list-general">
+    <div class="task-list__general">
         <h1 class="task-list__title">{{titlePage}}</h1>
         <div class="task-list__search-container">
-            <mat-form-field class="task-list__search-form example-form-field">
+            <mat-form-field class="task-list__search-form task-list__search-form--example-form-field">
                 <mat-label>Search by description..</mat-label>
                 <input matInput placeholder="Search" [(ngModel)]="searchQuery" (input)="filterTasks()">
             </mat-form-field>
-            <button class="button_new_item" mat-button matSuffix routerLink="/add-task">New item</button>
+            <button class="task-list__button-new-item" mat-button matSuffix routerLink="/add-task">New item</button>
         </div>
 
         <app-filter></app-filter>
         
         <div class="task-list__header">
             <div class="task-list__header-item">Date created</div>
-            <div class="task-list__header-item">Priority
-
+            <div class="task-list__header-item">
+                Priority
                 <button mat-icon-button (click)="sortTasksAscPriority()">
                     <mat-icon>arrow_upward</mat-icon>
                 </button>
@@ -22,8 +22,8 @@
                     <mat-icon>arrow_downward</mat-icon>
                 </button>
             </div>
-            
-            <div class="task-list__header-item">Description 
+            <div class="task-list__header-item">
+                Description
                 <button mat-icon-button (click)="sortTasksAsc()">
                     <mat-icon>arrow_upward</mat-icon>
                 </button>
@@ -34,19 +34,19 @@
             <div class="task-list__header-item">Actions</div>
         </div>
 
-        <div *ngFor="let task of paginatedTasks" [class.done]="task.done" class="task-list__item task-item">
-            <div class="task-item__date"><b>{{ task.dateCreate }}</b></div>
-            <div class="task-item__priority"><b>{{ task.priority }}</b></div>
-            <div class="task-item__description"><b>{{ task.description }}</b></div>
-            <div class="task-item__actions">
+        <div *ngFor="let task of paginatedTasks" [class.task-list__item--done]="task.done" class="task-list__item">
+            <div class="task-list__item-date"><b>{{ task.dateCreate }}</b></div>
+            <div class="task-list__item-priority"><b>{{ task.priority }}</b></div>
+            <div class="task-list__item-description"><b>{{ task.description }}</b></div>
+            <div class="task-list__item-actions">
                 <button *ngIf="!task.done" mat-button matSuffix (click)="markAsDone(task.id)">Done</button>
                 <button *ngIf="task.done" mat-button matSuffix (click)="revertDone(task.id)">Revert</button>
-                <button mat-button [routerLink]="['/edit-task', task.id]">Edit</button>
+                <button mat-button [routerLink]="['/edit-task', task.id]" [disabled]="task.done">Edit</button>
                 <button mat-button matSuffix (click)="remove(task.id)">Remove</button>
             </div>
         </div>
 
-        <div class="pagination-controls">
+        <div class="task-list__pagination-controls">
             <button mat-button (click)="prevPage()" [disabled]="currentPage === 0">Previous</button>
             <span>Page {{currentPage + 1}} of {{totalPages}}</span>
             <button mat-button (click)="nextPage()" [disabled]="currentPage >= totalPages - 1">Next</button>

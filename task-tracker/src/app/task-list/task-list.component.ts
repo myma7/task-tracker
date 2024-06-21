@@ -22,7 +22,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
   checker: string = '';
   private filterSubscription: Subscription = new Subscription();
 
-  constructor(private taskService: TaskService, public dialog: MatDialog, ) { }
+  constructor(private taskService: TaskService, public dialog: MatDialog ) { }
 
   ngOnInit(): void {
     this.loadTasks();

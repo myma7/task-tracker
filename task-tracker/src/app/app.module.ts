@@ -19,6 +19,7 @@ import { FilterComponent } from './filter/filter.component';
 import { EditTaskComponent } from './edit-task/edit-task.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ConfirmCancelEditDialogComponent } from './confirm-cancel-edit-dialog/confirm-cancel-edit-dialog.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     ConfirmDialogComponent,
     FilterComponent,
     EditTaskComponent,
+    ConfirmCancelEditDialogComponent,
   ],
   imports: [
     BrowserModule,
