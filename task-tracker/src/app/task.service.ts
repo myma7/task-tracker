@@ -8,21 +8,21 @@ export class TaskService {
   public tasks: Task[] = [
     {
       id: 1,
-      dateCreate: new Date().toISOString().split('T')[0],
+      endDate: new Date().toISOString().split('T')[0],
       priority: 'medium',
       description: 'Tidy up the room',
       done: false,
     },
     {
       id: 2,
-      dateCreate: new Date().toISOString().split('T')[0],
+      endDate: new Date().toISOString().split('T')[0],
       priority: 'low',
       description: 'Sign up for a yoga class',
       done: false,
     },
     {
       id: 3,
-      dateCreate: new Date().toISOString().split('T')[0],
+      endDate: new Date().toISOString().split('T')[0],
       priority: 'high',
       description:
         'Read the article "10 Ways to Improve Remote Work Efficiency"',
@@ -30,21 +30,21 @@ export class TaskService {
     },
     {
       id: 4,
-      dateCreate: new Date().toISOString().split('T')[0],
+      endDate: new Date().toISOString().split('T')[0],
       priority: 'medium',
       description: 'Do grocery shopping for the week',
       done: false,
     },
     {
       id: 5,
-      dateCreate: new Date().toISOString().split('T')[0],
+      endDate: new Date().toISOString().split('T')[0],
       priority: 'low',
       description: 'Do a math homework',
       done: false,
     },
     {
       id: 6,
-      dateCreate: new Date().toISOString().split('T')[0],
+      endDate: new Date().toISOString().split('T')[0],
       priority: 'low',
       description: 'Do a english homework',
       done: false,
@@ -64,7 +64,7 @@ export class TaskService {
   addTask(newTask: Task) {
     if (this.isTaskValid(newTask)) {
       newTask.id = this.tasks.length + 1;
-      newTask.dateCreate = new Date().toISOString().split('T')[0];
+      newTask.endDate = new Date().toISOString().split('T')[0];
       newTask.done = false;
 
       const firstDoneTaskIndex = this.tasks.findIndex((task) => task.done);

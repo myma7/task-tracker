@@ -22,7 +22,7 @@ export class EditTaskComponent implements OnInit {
   ) {
     this.currentTask = {
       id: 0,
-      dateCreate: '',
+      endDate: '',
       priority: '',
       description: '',
       done: false,

@@ -47,4 +47,8 @@ export class AddTaskComponent {
     this.taskService.errorMessage = '';
     this.router.navigate(['/task-list']);
   }
+
+  onTaskBack() {
+    this.router.navigate(['/task-list']);
+  }
 }
