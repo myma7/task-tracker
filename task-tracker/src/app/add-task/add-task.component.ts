@@ -5,25 +5,36 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-task',
   templateUrl: './add-task.component.html',
-  styleUrls: ['./add-task.component.scss']
+  styleUrls: ['./add-task.component.scss'],
 })
 export class AddTaskComponent {
   newTask: any = {
     description: '',
-    priority: ''
+    priority: '',
   };
 
   constructor(public taskService: TaskService, private router: Router) {}
 
   onTaskAdded() {
-    if (this.newTask.description.trim() === '' || this.newTask.priority.trim() === '') {
-      this.taskService.errorMessage = 'Cannot add empty task or task with missing priority!';
+    if (
+      this.newTask.description.trim() === '' ||
+      this.newTask.priority.trim() === ''
+    ) {
+      this.taskService.errorMessage =
+        'Cannot add empty task or task with missing priority!';
       this.router.navigate(['/add-list']);
-      return; 
+      return;
     }
-    
-    if (this.taskService.tasks.some(task => task.description.toLowerCase() === this.newTask.description.toLowerCase())) {
-      this.taskService.errorMessage = 'You cannot add the same element! Bro, please correct it!';
+
+    if (
+      this.taskService.tasks.some(
+        (task) =>
+          task.description.toLowerCase() ===
+          this.newTask.description.toLowerCase()
+      )
+    ) {
+      this.taskService.errorMessage =
+        'You cannot add the same element! Bro, please correct it!';
       this.router.navigate(['/add-list']);
       return;
     }
@@ -31,11 +42,9 @@ export class AddTaskComponent {
     this.taskService.addTask(this.newTask);
     this.newTask = {
       description: '',
-      priority: ''
+      priority: '',
     };
-    this.taskService.errorMessage = ''; 
+    this.taskService.errorMessage = '';
     this.router.navigate(['/task-list']);
   }
-
-  
 }

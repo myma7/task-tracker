@@ -7,10 +7,10 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
-  styleUrls: ['./task-list.component.scss']
+  styleUrls: ['./task-list.component.scss'],
 })
 export class TaskListComponent implements OnInit, OnDestroy {
-  titlePage = "Welcome in Task Tracker";
+  titlePage = 'Welcome in Task Tracker';
   tasks: any[] = [];
   filteredTasks: any[] = [];
   searchQuery: string = '';
@@ -22,7 +22,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
   checker: string = '';
   private filterSubscription: Subscription = new Subscription();
 
-  constructor(private taskService: TaskService, public dialog: MatDialog ) { }
+  constructor(private taskService: TaskService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.loadTasks();
@@ -43,15 +43,20 @@ export class TaskListComponent implements OnInit, OnDestroy {
   }
 
   filterTasks(): void {
-    this.filteredTasks = this.tasks.filter(task => 
+    this.filteredTasks = this.tasks.filter((task) =>
       task.description.toLowerCase().includes(this.searchQuery.toLowerCase())
     );
     this.updatePagination();
   }
 
   onTaskAdded(newTask: any): void {
-    if (this.tasks.some(task => task.description.toLowerCase() === newTask.description.toLowerCase())) {
-      this.errorMessage = "You cannot add the same element!";
+    if (
+      this.tasks.some(
+        (task) =>
+          task.description.toLowerCase() === newTask.description.toLowerCase()
+      )
+    ) {
+      this.errorMessage = 'You cannot add the same element!';
     } else {
       this.taskService.addTask(newTask);
       this.loadTasks();
@@ -70,18 +75,18 @@ export class TaskListComponent implements OnInit, OnDestroy {
   }
 
   edit(taskId: number): void {
-    const task = this.tasks.find(t => t.id === taskId);
+    const task = this.tasks.find((t) => t.id === taskId);
   }
 
   remove(taskId: number): void {
-    const task = this.tasks.find(t => t.id === taskId);
+    const task = this.tasks.find((t) => t.id === taskId);
     if (task) {
       const dialogRef = this.dialog.open(ConfirmDialogComponent, {
         width: '600px',
-        data: { description: task.description }
+        data: { description: task.description },
       });
 
-      dialogRef.afterClosed().subscribe(result => {
+      dialogRef.afterClosed().subscribe((result) => {
         if (result) {
           this.taskService.removeTask(taskId);
           this.loadTasks();
@@ -113,40 +118,40 @@ export class TaskListComponent implements OnInit, OnDestroy {
   removeDuplicates(): void {
     const uniqueDescriptions = new Set<string>();
     const uniqueTasks: any[] = [];
-   
-    this.tasks.forEach(task => {
+
+    this.tasks.forEach((task) => {
       const description = task.description.toLowerCase();
       if (!uniqueDescriptions.has(description)) {
         uniqueDescriptions.add(description);
         uniqueTasks.push(task);
       } else {
-        this.errorMessage = "You cannot add the same element!";
+        this.errorMessage = 'You cannot add the same element!';
       }
     });
 
     this.tasks = uniqueTasks;
-    this.filterTasks(); 
+    this.filterTasks();
   }
 
   updatePagination(): void {
     this.totalPages = Math.ceil(this.filteredTasks.length / this.itemsPerPage);
     this.paginatedTasks = this.filteredTasks.slice(
-        this.currentPage * this.itemsPerPage,
-        (this.currentPage + 1) * this.itemsPerPage
+      this.currentPage * this.itemsPerPage,
+      (this.currentPage + 1) * this.itemsPerPage
     );
   }
 
   nextPage(): void {
     if (this.currentPage < this.totalPages - 1) {
-        this.currentPage++;
-        this.updatePagination();
+      this.currentPage++;
+      this.updatePagination();
     }
   }
 
   prevPage(): void {
     if (this.currentPage > 0) {
-        this.currentPage--;
-        this.updatePagination();
+      this.currentPage--;
+      this.updatePagination();
     }
   }
 }
