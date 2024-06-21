@@ -5,6 +5,7 @@ import { TaskService } from '../task.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmCancelEditDialogComponent } from '../confirm-cancel-edit-dialog/confirm-cancel-edit-dialog.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-edit-task',
@@ -18,11 +19,12 @@ export class EditTaskComponent implements OnInit {
     public taskService: TaskService,
     private route: ActivatedRoute,
     private routerNavigate: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private datePipe: DatePipe // Inject DatePipe here
   ) {
     this.currentTask = {
       id: 0,
-      endDate: '',
+      endDate: new Date(),
       priority: '',
       description: '',
       done: false,
@@ -54,6 +56,10 @@ export class EditTaskComponent implements OnInit {
 
   saveTask(): void {
     if (this.currentTask) {
+      const formattedDate = this.datePipe.transform(this.currentTask.endDate, 'yyyy-MM-dd');
+      if (formattedDate) {
+        this.currentTask.endDate = new Date(formattedDate); // Update the endDate with formatted date
+      }
       this.taskService.updateTask(this.currentTask);
       this.routerNavigate.navigate(['/task-list']);
     }

@@ -20,6 +20,7 @@ import { EditTaskComponent } from './edit-task/edit-task.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ConfirmCancelEditDialogComponent } from './confirm-cancel-edit-dialog/confirm-cancel-edit-dialog.component';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -49,7 +50,7 @@ import { ConfirmCancelEditDialogComponent } from './confirm-cancel-edit-dialog/c
     MatNativeDateModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

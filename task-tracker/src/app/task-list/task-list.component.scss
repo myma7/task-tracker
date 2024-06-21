@@ -4,6 +4,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     height: 100vh;
     color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .task-list__title {
@@ -12,18 +13,21 @@
     color: black;
     text-align: center;
     margin-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .task-list__search-container {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .task-list__search-form {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .task-list__header,
@@ -61,6 +65,7 @@
     margin-right: 5px;
     background: rgba(255, 255, 255, 0.2);
     color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .task-list__item-actions button:hover {
@@ -100,6 +105,7 @@ mat-label, mat-form-field-infix {
 
 @media (max-width: 768px) {
     .task-list {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         padding: 10px;
         height: 100vh;
     }

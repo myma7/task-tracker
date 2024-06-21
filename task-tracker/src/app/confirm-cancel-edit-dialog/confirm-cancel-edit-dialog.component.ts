@@ -14,11 +14,11 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
         }}"?
       </p>
     </div>
-    <div mat-dialog-actions style="display: flex; justify-content: flex-end;">
+    <div mat-dialog-actions style="display: flex; justify-content: flex-end; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
       <button
         mat-button
         (click)="onNoClick()"
-        style="color: black; background-color: red; font-weight: bold;"
+        style="color: black; background-color: red; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"
       >
         No
       </button>
@@ -27,7 +27,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
         (click)="onYesClick()"
         [mat-dialog-close]="true"
         cdkFocusInitial
-        style="color: black; background-color: green; font-weight: bold;"
+        style="color: black; background-color: green; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"
       >
         Yes
       </button>

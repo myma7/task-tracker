@@ -35,7 +35,7 @@
         </div>
 
         <div *ngFor="let task of paginatedTasks" [class.task-list__item--done]="task.done" class="task-list__item">
-            <div class="task-list__item-date"><b>{{ task.endDate }}</b></div>
+            <div class="task-list__item-date"><b>{{ task.endDate | date:'shortDate' }}</b></div>
             <div class="task-list__item-priority"><b>{{ task.priority }}</b></div>
             <div class="task-list__item-description"><b>{{ task.description }}</b></div>
             <div class="task-list__item-actions">

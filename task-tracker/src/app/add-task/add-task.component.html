@@ -1,25 +1,32 @@
 <div class="add-task">
     <h1 class="add-task__title">Adding a new task</h1>
     <div class="add-task__form-container">
-        <mat-form-field class="add-task__form-field">
-            <mat-label class="add-task__label">Description</mat-label>
-            <input matInput class="add-task__input" placeholder="Enter task description" name="description"
-                [(ngModel)]="newTask.description">
-        </mat-form-field>
-        <mat-form-field class="add-task__form-field">
-            <mat-label class="add-task__label">Priority</mat-label>
-            <mat-select placeholder="Select priority" name="priority" [(ngModel)]="newTask.priority">
-                <mat-option value="low">Low</mat-option>
-                <mat-option value="medium">Medium</mat-option>
-                <mat-option value="high">High</mat-option>
-            </mat-select>
-        </mat-form-field>
-        <div class="add-task__buttons">
-            <button mat-button class="add-task__button add-task__button--back" matSuffix (click)="onTaskBack()">Back</button>
-            <button mat-button class="add-task__button add-task__button--add" matSuffix (click)="onTaskAdded()">Add</button>
-        </div>
+      <mat-form-field class="add-task__form-field">
+        <mat-label class="add-task__label">Description</mat-label>
+        <input matInput class="add-task__input" placeholder="Enter task description" name="description" [(ngModel)]="newTask.description">
+      </mat-form-field>
+      <mat-form-field class="add-task__form-field">
+        <mat-label class="add-task__label">Priority</mat-label>
+        <mat-select placeholder="Select priority" name="priority" [(ngModel)]="newTask.priority">
+          <mat-option value="low">Low</mat-option>
+          <mat-option value="medium">Medium</mat-option>
+          <mat-option value="high">High</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label class="edit-task__label">End date</mat-label>
+        <input matInput [matDatepicker]="picker" placeholder="Date" [(ngModel)]="newTask.endDate" name="endDate" id="edit-task-date" class="edit-task__input">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+  
+      <div class="add-task__buttons">
+        <button mat-button class="add-task__button add-task__button--back" matSuffix (click)="onTaskBack()">Back</button>
+        <button mat-button class="add-task__button add-task__button--add" matSuffix (click)="onTaskAdded()">Add</button>
+      </div>
     </div>
     <div *ngIf="taskService.errorMessage" class="add-task__error-message">
-        {{ taskService.errorMessage }}
+      {{ taskService.errorMessage }}
     </div>
-</div>
+  </div>
+  

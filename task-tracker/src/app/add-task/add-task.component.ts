@@ -11,6 +11,7 @@ export class AddTaskComponent {
   newTask: any = {
     description: '',
     priority: '',
+    endDate: ''
   };
 
   constructor(public taskService: TaskService, private router: Router) {}
@@ -18,10 +19,11 @@ export class AddTaskComponent {
   onTaskAdded() {
     if (
       this.newTask.description.trim() === '' ||
-      this.newTask.priority.trim() === ''
+      this.newTask.priority.trim() === '' ||
+      !this.newTask.endDate
     ) {
       this.taskService.errorMessage =
-        'Cannot add empty task or task with missing priority!';
+        'Cannot add empty task, task with missing priority or end date!';
       this.router.navigate(['/add-list']);
       return;
     }
@@ -43,6 +45,7 @@ export class AddTaskComponent {
     this.newTask = {
       description: '',
       priority: '',
+      endDate: '',
     };
     this.taskService.errorMessage = '';
     this.router.navigate(['/task-list']);

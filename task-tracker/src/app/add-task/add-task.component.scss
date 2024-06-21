@@ -18,6 +18,8 @@
 
 .add-task__title {
     margin-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 1px;
 }
 
 .add-task__form-container {
@@ -36,6 +38,7 @@
 }
 
 .add-task__button {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: rgba(255, 255, 255, 0.2);
     color: black;
     margin-top: 10px;
@@ -51,6 +54,7 @@
 }
 
 .add-task__error-message {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: red;
     margin-top: 10px;
     font-size: 20px;
@@ -60,6 +64,7 @@
 
 .add-task__label, .add-task__input {
     color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .add-task__buttons {

@@ -8,21 +8,21 @@ export class TaskService {
   public tasks: Task[] = [
     {
       id: 1,
-      endDate: new Date().toISOString().split('T')[0],
+      endDate: new Date(),
       priority: 'medium',
       description: 'Tidy up the room',
       done: false,
     },
     {
       id: 2,
-      endDate: new Date().toISOString().split('T')[0],
+      endDate: new Date(),
       priority: 'low',
       description: 'Sign up for a yoga class',
       done: false,
     },
     {
       id: 3,
-      endDate: new Date().toISOString().split('T')[0],
+      endDate: new Date(),
       priority: 'high',
       description:
         'Read the article "10 Ways to Improve Remote Work Efficiency"',
@@ -30,21 +30,21 @@ export class TaskService {
     },
     {
       id: 4,
-      endDate: new Date().toISOString().split('T')[0],
+      endDate: new Date(),
       priority: 'medium',
       description: 'Do grocery shopping for the week',
       done: false,
     },
     {
       id: 5,
-      endDate: new Date().toISOString().split('T')[0],
+      endDate: new Date(),
       priority: 'low',
       description: 'Do a math homework',
       done: false,
     },
     {
       id: 6,
-      endDate: new Date().toISOString().split('T')[0],
+      endDate: new Date(),
       priority: 'low',
       description: 'Do a english homework',
       done: false,
@@ -64,7 +64,6 @@ export class TaskService {
   addTask(newTask: Task) {
     if (this.isTaskValid(newTask)) {
       newTask.id = this.tasks.length + 1;
-      newTask.endDate = new Date().toISOString().split('T')[0];
       newTask.done = false;
 
       const firstDoneTaskIndex = this.tasks.findIndex((task) => task.done);
@@ -86,6 +85,7 @@ export class TaskService {
   getTaskById(id: number): Task | undefined {
     return this.tasks.find((task) => task.id === id);
   }
+
   markTaskAsDone(taskId: number): void {
     const taskIndex = this.tasks.findIndex((t) => t.id === taskId);
     if (taskIndex !== -1) {
@@ -110,6 +110,7 @@ export class TaskService {
       this.applyFilter();
     }
   }
+
   removeTask(taskId: number): void {
     this.tasks = this.tasks.filter((item) => item.id !== taskId);
     this.applyFilter();
@@ -165,11 +166,13 @@ export class TaskService {
   edit(taskId: number): void {
     const task = this.tasks.find((t) => t.id === taskId);
   }
+
   private isTaskValid(task: Task): boolean {
     return (
       !!task.description &&
       task.description.trim().length > 0 &&
-      !!task.priority
+      !!task.priority &&
+      !!task.endDate
     );
   }
 }
