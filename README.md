@@ -1,42 +1,27 @@
-# Task Tracker Application
+# TaskTracker
 
-## Overview
-The Task Tracker application is a task management tool built with Angular 14 and Angular Material. It allows users to create, update, delete, and filter tasks based on various criteria. The application utilizes several Angular modules and components to provide a responsive and user-friendly interface.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.13.
 
-## Technologies and Libraries Used
-- **Angular 14**: The core framework used for building the application.
-- **Angular Material**: A UI component library used to create a modern and responsive user interface.
-- **Angular Forms**: For handling user input through forms.
-- **Angular Animations**: For providing animations in the application.
-- **Custom Components**: Several custom components to handle specific functionalities.
+## Development server
 
-## Application Structure
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-### Modules
-The application consists of the following main modules:
-- **BrowserModule**: Required for running the application in a browser.
-- **AppRoutingModule**: Handles routing within the application.
-- **BrowserAnimationsModule**: Enables animations in the application.
-- **FormsModule**: Provides support for template-driven forms.
-- **Angular Material Modules**: Various modules from Angular Material for UI components.
+## Code scaffolding
 
-### Components
-The application includes the following custom components:
-- **AppComponent**: The root component of the application.
-- **TaskListComponent**: Displays the list of tasks.
-- **AddTaskComponent**: Form for adding new tasks.
-- **ConfirmDialogComponent**: Dialog for confirming actions.
-- **FilterComponent**: Provides filtering options for tasks.
-- **EditTaskComponent**: Form for editing existing tasks.
-- **ConfirmCancelEditDialogComponent**: Dialog for confirming cancel edit actions.
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-### Services
-The core service managing the tasks is **TaskService**. It provides methods to:
-- Get the list of tasks.
-- Add a new task.
-- Mark a task as done.
-- Revert a task to not done.
-- Update an existing task.
-- Remove a task.
-- Sort tasks by description or priority.
-- Apply filters to tasks.
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
