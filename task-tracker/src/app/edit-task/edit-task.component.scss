@@ -1,81 +1,89 @@
+
 .edit-task {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     background: linear-gradient(135deg, #ff7e5f, #feb47b);
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     color: black;
-    height: 100vh;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .edit-task__title {
-    font-size: 3rem;
-    letter-spacing: 1px;
-    text-align: center;
     margin-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 1px;
 }
 
 .edit-task__form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    width: 100%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .edit-task__input-container {
-    display: flex;
-    flex-direction: column;
+    margin-bottom: 20px;
 }
 
-.edit-task__label {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-}
-
-.edit-task__input {
-    box-sizing: border-box;
-    padding: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
-    background: rgba(255, 255, 255, 0.1);
-    color: rgb(56, 34, 34);
-}
-
-.edit-task__actions {
-    display: flex;
-    justify-content: space-between;
+.edit-task__input-container mat-form-field {
+    width: 100%;
 }
 
 .edit-task__button {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: rgba(255, 255, 255, 0.2);
     color: black;
+    margin-top: 10px;
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
-.edit-task__button--save:hover, .edit-task__button--cancel:hover {
+.edit-task__button:hover {
     background: rgba(255, 255, 255, 0.3);
+}
+
+.edit-task__label, .edit-task__input {
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.edit-task__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 @media (max-width: 768px) {
     .edit-task {
         padding: 10px;
+        height: auto;
     }
 
     .edit-task__title {
-        font-size: 2rem;
+        font-size: 1.5rem; 
     }
 
     .edit-task__form {
-        gap: 10px;
+        padding: 15px;
+        max-width: 90%; 
     }
 
-    .edit-task__input {
-        padding: 8px;
+    .edit-task__input-container {
+        margin-bottom: 15px;
     }
 
     .edit-task__button {
-        padding: 8px 16px;
+        padding: 8px 16px; 
+        font-size: 0.9rem;
     }
 }
