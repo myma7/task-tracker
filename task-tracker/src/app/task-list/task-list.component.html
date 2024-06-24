@@ -1,15 +1,17 @@
 <div class="task-list">
     <div class="task-list__general">
         <h1 class="task-list__title">{{titlePage}}</h1>
-        <div class="task-list__search-container">
-            <mat-form-field class="task-list__search-form task-list__search-form--example-form-field">
-                <mat-label>Search by description..</mat-label>
-                <input matInput placeholder="Search" [(ngModel)]="searchQuery" (input)="filterTasks()">
-            </mat-form-field>
+        <div class="task-container__controls">
+            <div class="task-list__search-container">
+                <mat-form-field class="task-list__search-form task-list__search-form--example-form-field">
+                    <mat-label>Search by description..</mat-label>
+                    <input matInput placeholder="Search" [(ngModel)]="searchQuery" (input)="filterTasks()">
+                </mat-form-field>
+            </div>
+
+            <app-filter></app-filter>
             <button class="task-list__button-new-item" mat-button matSuffix routerLink="/add-task">New item</button>
         </div>
-
-        <app-filter></app-filter>
 
         <div class="task-list__header">
             <div class="task-list__header-item">End date</div>
